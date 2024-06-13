@@ -1,7 +1,6 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include <string.h>
-#include <conio.h>
 void encoded(int distance, char a[]) {
     for (int i = 0; i < 26; i++) {
         a[i] = 'A' + distance + i;
