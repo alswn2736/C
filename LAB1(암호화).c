@@ -13,12 +13,11 @@ void encoded(int distance, char a[]) {
 void encodedSentence(char a[], char o[], char e[]) {
     int i;
     for (i = 0; o[i] != '\0'; i++) {
-        if (o[i] >= 'A' && o[i] <= 'Z') {
+        if (o[i] >= 'A' && o[i] <= 'Z')
             e[i] = a[o[i] - 'A'];
-        }
-        else {
+        
+        else
             e[i] = o[i];
-        }
     }
     e[i] = '\0';
 }
@@ -31,14 +30,13 @@ int main(void) {
     printf("----------------------------------------------------\n");
     printf("alphabet: \t");
 
-    for (int i = 'A'; i <= 'Z'; i++) {
+    for (int i = 'A'; i <= 'Z'; i++)
         printf("%c", i);
-    }
+    
     printf("\nencoded: \t");
     encoded(distance, alphabet);
-    for (int i = 0; i < 26; i++) {
+    for (int i = 0; i < 26; i++)
         printf("%c", alphabet[i]);
-    }
     
     printf("\n\n");
 
