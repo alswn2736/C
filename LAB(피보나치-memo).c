@@ -1,44 +1,44 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include <stdlib.h>
-int fib(int n, int* F)
-{
-	if (n == 1 || n == 2)
+long fib(int n, long *m) {
+	if(n == 1 || n == 2)
 		return 1;
-
-	if (F[n] > 1)
-		return F[n];
-
-	F[n] = fib(n - 1, F) + fib(n - 2, F);
-
-	return F[n];
-
-	/*
-	if (n == 1 || n == 2)
-		return 1;
-	if (F[n - 1] == 0)
-		F[n - 1] = fib(n - 1, F);
-	if (F[n - 2] == 0)
-		F[n - 2] = fib(n - 2, F);
-	
-	return F[n - 1] + F[n - 2];
-	*/
+	else{
+		if(m[n-1] == 0)
+			m[n-1] = fib(n-1, m);
+		if(m[n-2] == 0)
+			m[n-2] = fib(n-2, m);
+		return m[n-1]+m[n-2];
+	}
 }
-int main(void)
-{
+
+long fib2(int n, long *m) {
+	if(m[n] != 0) 
+		return m[n];
+
+	if(n == 1 || n == 2)
+		return 1;
+	else {
+		m[n] = fib2(n-1, m) + fib2(n-2, m);
+		return m[n];
+	}
+}
+
+int main() {
 	int n, i;
-	int* F;
+	long *m;
+	//scanf("%d", &n);
+	n = 44;
+	
+	m = (long*) malloc(sizeof(long)*(n+1));
+	for(i=0; i<n+1; i++)
+		m[i] = 0;
+	printf("%ld\n",fib(n,m));
 
-	printf("몇 번째까지의 피보나치 수열: ");
-	scanf("%d", &n);
+	/*for(i=0; i<n+1; i++)
+		m[i] = 0;
+	printf("%ld\n",fib2(n,m));*/
 
-	F = (int*)malloc(sizeof(int) * (n + 1));
-	for (i = 1; i <= n; i++)
-		F[i] = 1;
-
-	F[n] = fib(n, F);
-	for (i = 1; i <= n; i++)
-		printf("%d ", F[i]);
-
-	free(F);
+	return 0;
 }
