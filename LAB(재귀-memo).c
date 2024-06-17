@@ -1,27 +1,24 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include <stdlib.h>
-long long combinationRepetition(int n, long long* arr) {
-	if (n == 0 || n == 1)
+long H(int n) {
+	if(n<2)
 		return 1;
+	else {
+		long ret = 0;
+		int i;
 
-	if (arr[n] > 1)
-		return arr[n];
-
-	for (int i = 1; i < n; i++)
-		arr[n] += (combinationRepetition(i, arr) * combinationRepetition(n - i, arr));
-
-	return arr[n];
+		for(i=0; i<n; i++)
+			ret = ret + H(i)*H(n-i-1);
+		return ret;
+	}
 }
-int main(void) {
+
+int main(void)
+{
 	int n;
 	scanf("%d", &n);
-
-	long long* arr = (long long*)malloc(sizeof(long long) * (n + 1));
-
-	for (int i = 0; i <= n; i++)
-		arr[i] = 0;
-
-	long long rslt = combinationRepetition(n, arr);
-	printf("%lld", rslt);
+	n = 20;
+	printf("%ld\n", H(n));
+	return 0;
 }
