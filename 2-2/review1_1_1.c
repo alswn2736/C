@@ -5,7 +5,7 @@ void reverse_string(char* str, int s, int e) {
 	int i, temp;
 
 	if (s >= e)
-		return 0;
+		return;
 	else {
 		temp = str[s];
 		str[s] = str[e];
@@ -22,6 +22,4 @@ int main(void) {
 
 	reverse_string(str, 0, strlen(str) - 1);
 	printf("\nReversed String is: %s", str);
-
-	return 0;
 }
