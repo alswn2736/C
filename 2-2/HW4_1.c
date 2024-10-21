@@ -89,6 +89,17 @@ int get_twoleaf_count(TreeNode* node) {
 	return count;
 }
 
+int get_leaf_count(TreeNode* node){
+	int count = 0;
+	if(node != NULL){
+		if(node->left == NULL && node->right == NULL) return 1;
+		else
+			count = get_leaf_count(node->left) + get_leaf_count(node->right);
+	}
+	return count;
+
+}
+
 // 노드값 중 최댓값 반환
 int get_max(TreeNode* node) {
 	TreeNode* max = node;
