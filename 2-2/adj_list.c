@@ -42,6 +42,11 @@ void insert_edge(GraphType* g, int u, int v) {
 	node->vertex = v;
 	node->link = g->adj_list[u];
 	g->adj_list[u] = node;
+
+	node = (GraphNode*)malloc(sizeof(GraphNode));
+    node->vertex = v;
+    node->link = g->adj_list[u];
+    g->adj_list[u] = node;
 }
 
 void print_adj_list(GraphType* g) {
